@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     changeTransaction,
-    createTransaction,
-} from "../features/transaction/transactionSlice";
 
-export default function Form() {
+} from "../../features/transaction/transactionSlice.js";
+
+export default function Formedit() {
     const [name, setName] = useState("");
     const [type, setType] = useState("");
     const [amount, setAmount] = useState("");
@@ -35,17 +35,17 @@ export default function Form() {
         setAmount("");
     };
 
-    const handleCreate = (e) => {
-        e.preventDefault();
-        dispatch(
-            createTransaction({
-                name,
-                type,
-                amount: Number(amount),
-            })
-        );
-        reset();
-    };
+    // const handleCreate = (e) => {
+    //     e.preventDefault();
+    //     dispatch(
+    //         createTransaction({
+    //             name,
+    //             type,
+    //             amount: Number(amount),
+    //         })
+    //     );
+    //     reset();
+    // };
 
     const handleUpdate = (e) => {
         e.preventDefault();
@@ -69,10 +69,11 @@ export default function Form() {
     };
 
     return (
-        <div className="form">
-            <h3>Add new transaction</h3>
+        <>{editMode &&
+         <div className="form">
+            <h3>Edit transaction</h3>
 
-            <form onSubmit={editMode ? handleUpdate : handleCreate}>
+            <form onSubmit={handleUpdate}>
                 <div className="form-group">
                     <label>Name</label>
                     <input
@@ -123,8 +124,8 @@ export default function Form() {
                     />
                 </div>
 
-                <button disabled={isLoading} className="btn hover:bg-green-700" type="submit">
-                    {editMode ? "Update Transaction" : "Add Transaction"}
+                <button disabled={isLoading} className="btn" type="submit">
+                    Update Transaction
                 </button>
 
                 {!isLoading && isError && (
@@ -138,5 +139,6 @@ export default function Form() {
                 </button>
             )}
         </div>
+        }</>
     );
 }

@@ -55,7 +55,7 @@
 }
 
 .form {
-    background-color: #f5f5f5;
+    background-color: #f5f5f5 !important;
     padding: 20px;
     width: 400px;
 }
@@ -66,6 +66,7 @@
     gap: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
+    
 }
 
 .radio {
@@ -73,7 +74,9 @@
 }
 
 input {
-    padding: 5px 10px;
+    padding: 5px 10px !important;
+    border:1px solid grey;
+    border-radius: 5px;
 }
 
 .btn {
@@ -82,14 +85,18 @@ input {
     outline: none;
     cursor: pointer;
     padding: 10px;
-    background-color: #4338ca;
+    background-color: #4338ca !important;
     color: white;
     transition: background-color 0.3s ease;
 }
 
 .btn:hover {
-    background-color: #094d3d;
+    background-color: #094d3d !important;
 }
+.btn_view:hover {
+    background-color: #094d3d !important;
+}
+
 
 ul {
     list-style: none;
@@ -176,6 +183,7 @@ label {
     text-align: left;
 }
 
+
 .conatiner_of_list_of_transactions ul {
     max-height: 500px;
     overflow-y: auto;
@@ -183,6 +191,20 @@ label {
 
 .error {
     color: red;
+}
+
+.btn_view {
+    width: 15%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 3%;
+    padding: 10px;
+    padding-left: 50px;
+    background-color: #44b3db;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
 }
 
 @media (max-width: 450px) {

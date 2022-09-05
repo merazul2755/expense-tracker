@@ -7,8 +7,8 @@ import {
 } from "../../features/transaction/transactionSlice";
 import numberWithCommas from "../../utils/numberWithCommas";
 
-export default function Transaction({ transaction }) {
-    const { name, amount, type, id } = transaction || {};
+export default function Transaction({ transaction , index}) {
+    const { name, amount, type, id, } = transaction || {};
     const dispatch = useDispatch();
 
     const handleEdit = () => {
@@ -21,6 +21,7 @@ export default function Transaction({ transaction }) {
 
     return (
         <li className={`transaction ${type}`}>
+            <p>{index+1}</p>
             <p>{name}</p>
             <div className="right">
                 <p>৳ {numberWithCommas(amount)}</p>

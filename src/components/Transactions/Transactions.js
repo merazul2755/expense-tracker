@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { fetchTransactions } from "../../features/transaction/transactionSlice";
 import Transaction from "./Transaction";
 
 export default function Transactions() {
     const dispatch = useDispatch();
 
-    const { transactions, isLoading, isError } = useSelector(
+    const { transactions, isLoading, isError} = useSelector(
         (state) => state.transaction
     );
 
@@ -22,9 +23,9 @@ export default function Transactions() {
         content = <p className="error">There was an error occured</p>;
 
     if (!isLoading && !isError && transactions?.length > 0) {
-        content = transactions.map((transaction) => (
-            <Transaction key={transaction.id} transaction={transaction} />
-        ));
+        content = transactions.map((transaction,index) => (
+            <Transaction key={transaction.id} transaction={transaction} index={index}/>
+        )).reverse().slice(0,5);
     }
 
     if (!isLoading && !isError && transactions?.length === 0) {
@@ -38,6 +39,9 @@ export default function Transactions() {
             <div className="conatiner_of_list_of_transactions">
                 <ul>{content}</ul>
             </div>
+
+            <Link to='/viewall' className="btn_view">View All</Link>
+
         </>
     );
 }

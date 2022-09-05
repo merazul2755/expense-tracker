@@ -1,22 +1,88 @@
 {
   "transactions": [
     {
-      "name": "Pendrive",
-      "amount": "500",
+      "name": "shopping",
       "type": "expense",
-      "id": 3
-    },
-    {
-      "name": "Salary",
-      "type": "income",
-      "amount": 20000,
+      "amount": 10000,
       "id": 4
     },
     {
-      "name": "upori income",
+      "name": "Movie Ticket",
+      "type": "expense",
+      "amount": 2000,
+      "id": 5
+    },
+    {
+      "name": "shopping",
+      "type": "expense",
+      "amount": 5000,
+      "id": 6
+    },
+    {
+      "name": "Salary 2",
+      "type": "income",
+      "amount": 50000,
+      "id": 7
+    },
+    {
+      "name": "Test",
+      "type": "income",
+      "amount": 17000,
+      "id": 8
+    },
+    {
+      "name": "Roaming",
+      "type": "expense",
+      "amount": 15000,
+      "id": 9
+    },
+    {
+      "name": "abe",
+      "type": "income",
+      "amount": 1000,
+      "id": 10
+    },
+    {
+      "name": "ex",
+      "type": "expense",
+      "amount": 1000,
+      "id": 11
+    },
+    {
+      "name": "cdwe",
+      "type": "income",
+      "amount": 5000,
+      "id": 12
+    },
+    {
+      "name": "sd",
+      "type": "expense",
+      "amount": 2000,
+      "id": 13
+    },
+    {
+      "name": "expense",
+      "type": "expense",
+      "amount": 5000,
+      "id": 14
+    },
+    {
+      "name": "September",
+      "type": "income",
+      "amount": 50000,
+      "id": 15
+    },
+    {
+      "name": "August",
       "type": "income",
       "amount": 20000,
-      "id": 5
+      "id": 16
+    },
+    {
+      "name": "Market",
+      "type": "expense",
+      "amount": 3000,
+      "id": 17
     }
   ]
 }

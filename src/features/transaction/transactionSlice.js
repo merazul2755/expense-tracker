@@ -1,9 +1,10 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice,  } from "@reduxjs/toolkit";
 import {
     addTransaction,
     deleteTransaction,
     editTransaction,
     getTransactions,
+    searchTransactions
 } from "./transactionAPI";
 
 const initialState = {
@@ -12,6 +13,8 @@ const initialState = {
     isError: false,
     error: "",
     editing: {},
+    search: '',
+    type:'',
 };
 
 // async thunks
@@ -46,6 +49,13 @@ export const removeTransaction = createAsyncThunk(
         return transaction;
     }
 );
+export const searchesTransactions = createAsyncThunk(
+    "transaction/searchesTransaction",
+    async ({type, search,start,limit}) => {
+        const transaction = await searchTransactions(type,search,start,limit);
+        return transaction;
+    }
+);
 
 // create slice
 const transactionSlice = createSlice({
@@ -58,6 +68,16 @@ const transactionSlice = createSlice({
         editInActive: (state) => {
             state.editing = {};
         },
+        searched: (state, action) => {
+            state.search = action.payload;
+        },
+        typed: (state, action) => {
+            state.type = action.payload;
+        },
+        resetsearched:(state,action)=>{
+            state.search = ""
+            state.type = ''
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -126,9 +146,24 @@ const transactionSlice = createSlice({
                 state.isLoading = false;
                 state.isError = true;
                 state.error = action.error?.message;
-            });
+            })
+            .addCase(searchesTransactions.pending, (state) => {
+                state.isError = false;
+                state.isLoading = true;
+            })
+            .addCase(searchesTransactions.fulfilled, (state, action) => {
+                state.isError = false;
+                state.isLoading = false;
+                state.transactions = action.payload;
+            })
+            .addCase(searchesTransactions.rejected, (state, action) => {
+                state.isLoading = false;
+                state.isError = true;
+                state.error = action.error?.message;
+                state.transactions = [];
+            })
     },
 });
 
 export default transactionSlice.reducer;
-export const { editActive, editInActive } = transactionSlice.actions;
+export const { editActive, editInActive, searched,resetsearched,typed } = transactionSlice.actions;

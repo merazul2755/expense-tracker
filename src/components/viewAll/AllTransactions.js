@@ -35,7 +35,7 @@ export default function AllTransactions() {
         ))
     }
 
-    if (!isLoading && !isError && transactions ?. length === 0) {
+    if (!isLoading && !isError && transactions?.length === 0) {
         content = <p>No transactions found!</p>;
     }
 
@@ -43,7 +43,7 @@ export default function AllTransactions() {
         <>
             <p className="second_heading">Your Transactions:</p>
 
-            <div className="conatiner_of_list_of_transactions">
+            <div className="conatiner_of_list_of_transactions scroll-smooth">
                 <ul>{content}</ul>
             </div>
 

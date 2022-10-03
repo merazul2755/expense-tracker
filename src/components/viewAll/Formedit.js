@@ -69,7 +69,7 @@ export default function Formedit() {
     };
 
     return (
-        <>{editMode &&
+        <>{editMode ?
          <div className="form">
             <h3>Edit transaction</h3>
 
@@ -138,7 +138,7 @@ export default function Formedit() {
                     Cancel Edit
                 </button>
             )}
-        </div>
+        </div>:''
         }</>
     );
 }
